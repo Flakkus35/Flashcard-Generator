@@ -5,6 +5,7 @@ var ClozeCard = function(text, cloze) {
 }
 
 ClozeCard.prototype.clozeDelete = function() {
+	// Replaces cloze answer with ...
 	this.partial = this.fullText.replace(this.answer, '...');
 }
 
