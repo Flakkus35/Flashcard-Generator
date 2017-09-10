@@ -5,7 +5,7 @@ var ClozeCard = function(text, cloze) {
 }
 
 ClozeCard.prototype.clozeDelete = function() {
-	this.partial = this.fullText.replace(this.answer, '');
+	this.partial = this.fullText.replace(this.answer, '...');
 }
 
 module.exports = ClozeCard;

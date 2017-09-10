@@ -21,7 +21,7 @@ if (param1 == "basic") {
 		var newQuestion = new BasicCard(input.question, input.answer);
 		console.log("Question: " + newQuestion.front);
 		console.log("Answer: " + newQuestion.back);
-		fs.appendFile("flashlog.txt", newQuestion.front + ', ' + newQuestion.back, function(err) {
+		fs.appendFile("flashlog.txt", newQuestion.front + ', ' + newQuestion.back + ',', function(err) {
 			if (err) {
 				return console.log(err);
 			} 
@@ -47,8 +47,40 @@ if (param1 == "basic") {
 		}
 		console.log('Question: ' + newClozeQuestion.partial);
 		console.log('Answer: ' + newClozeQuestion.answer);
+		fs.appendFile("flashlog.txt", newClozeQuestion.partial + ', ' + newClozeQuestion.answer + ',', function(err) {
+			if (err) {
+				return console.log(err);
+			}
+		})
 	})
-} else {
+} else if (param1 == 'run') {
+	fs.readFile('flashlog.txt', 'utf8', function(err, data) {
+		if (err) {
+			return console.log(err);
+		}
+		var dataArr = data.split(',');
+		// console.log(dataArr);
+		var count = 0;
+		var askQuestion = function() {
+			if (count < dataArr.length - 2) {
+				inquirer.prompt([
+					{
+						name: 'question',
+						type: 'input',
+						message: dataArr[count]
+					}
+				]).then(function(input) {
+					console.log('Answer = ' + dataArr[count + 1]);
+					count+=2;
+					askQuestion();
+				});
+			}
+			
+		}
+		askQuestion();
+	});
+} 
+else {
 	console.log(param1 + " is not a valid command");
 }
 
