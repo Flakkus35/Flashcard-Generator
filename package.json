@@ -1,0 +1,22 @@
+{
+  "name": "flashcard",
+  "version": "1.0.0",
+  "description": "creates flashcards",
+  "main": "\t\t",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flakkus35/Flashcard-Generator.git"
+  },
+  "author": "Devon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Flakkus35/Flashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/Flakkus35/Flashcard-Generator#readme",
+  "dependencies": {
+    "inquirer": "^3.2.3"
+  }
+}
